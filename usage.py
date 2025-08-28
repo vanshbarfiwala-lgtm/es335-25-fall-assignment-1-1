@@ -10,7 +10,7 @@ You will be expected to use this to make trees for:
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from tree.base import DecisionTree
+from base import DecisionTree
 from metrics import *
 
 np.random.seed(42)
@@ -23,7 +23,7 @@ X = pd.DataFrame(np.random.randn(N, P))
 y = pd.Series(np.random.randn(N))
 
 
-for criteria in ["information_gain", "gini_index"]:
+for criteria in ["entropy", "gini"]:
     tree = DecisionTree(criterion=criteria)  # Split based on Inf. Gain
     tree.fit(X, y)
     y_hat = tree.predict(X)
@@ -40,7 +40,7 @@ P = 5
 X = pd.DataFrame(np.random.randn(N, P))
 y = pd.Series(np.random.randint(P, size=N), dtype="category")
 
-for criteria in ["information_gain", "gini_index"]:
+for criteria in ["entropy", "gini"]:
     tree = DecisionTree(criterion=criteria)  # Split based on Inf. Gain
     tree.fit(X, y)
     y_hat = tree.predict(X)
@@ -60,7 +60,7 @@ P = 5
 X = pd.DataFrame({i: pd.Series(np.random.randint(P, size=N), dtype="category") for i in range(5)})
 y = pd.Series(np.random.randint(P, size=N), dtype="category")
 
-for criteria in ["information_gain", "gini_index"]:
+for criteria in ["entropy", "gini"]:
     tree = DecisionTree(criterion=criteria)  # Split based on Inf. Gain
     tree.fit(X, y)
     y_hat = tree.predict(X)
@@ -79,7 +79,7 @@ P = 5
 X = pd.DataFrame({i: pd.Series(np.random.randint(P, size=N), dtype="category") for i in range(5)})
 y = pd.Series(np.random.randn(N))
 
-for criteria in ["information_gain", "gini_index"]:
+for criteria in ["entropy", "gini"]:
     tree = DecisionTree(criterion=criteria)  # Split based on Inf. Gain
     tree.fit(X, y)
     y_hat = tree.predict(X)
